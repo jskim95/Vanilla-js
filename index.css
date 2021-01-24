@@ -1,0 +1,13 @@
+h1 {
+    color: slategrey;
+    transition: color 0.5s ease-in-out;
+}
+.form,
+.greettings {
+    display: none;
+}
+
+.showing {
+    display: block;
+}
+
