@@ -4,10 +4,18 @@ const todoList = document.querySelector('.js-todoList');
 
 const CURRENTTODO_LS = 'TODO'
 
-const todos = []; 
+let todos = []; 
 
 function deleteTodo(event) {
-    console.log(event.target)
+    const btn = event.target;
+    const li = btn.parentNode;
+    todoList.removeChild(li)
+    const cleanTodos = todos.filter(function(todo) {
+        console.log(todo)
+        return todo.id !== parseInt(li.id);
+    })
+    todos = cleanTodos;
+    saveTodos();
 }
 
 function saveTodos() {
@@ -26,6 +34,7 @@ function paintTodo(text) {
     li.appendChild(span);
     li.appendChild(delBtn);
     todoList.appendChild(li);
+    li.id = newId;
 
     const todoObj = {
         text : text,
